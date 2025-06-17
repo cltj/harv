@@ -1,0 +1,37 @@
+# trigger:
+#   tags:
+#     include:
+#     - v*.*
+
+jobs:
+  - job: "testjava"
+    displayName: "testjava"
+    pool:
+      vmImage: "ubuntu-latest"
+
+    steps:
+      - task: UsePythonVersion@0
+        inputs:
+          versionSpec: "3.x"
+          addToPath: true
+
+      - script: |
+          sudo apt-get update
+          sudo apt-get install default-jdk
+        displayName: "Install default-jdk"
+
+      - script: |
+          readlink -f $(which java) | sed "s:/bin/java::"
+        displayName: "Find path of java"
+
+      - script: |
+          export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+        displayName: "Add path of java to JAVA_HOME"
+
+      - script: |
+          source ~/.bashrc
+        displayName: "Source bashrc"
+
+      - script: |
+          echo $JAVA_HOME
+        displayName: "Print JAVA_HOME"

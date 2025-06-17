@@ -1,0 +1,338 @@
+[project]
+name = "harv"
+dynamic = ["version"]
+#version = "0.1.0"
+description = "harv is a collection of common functionalities for use in dataengineering on databricks platform"
+readme = "README.md"
+authors = [
+    { name = "cltj", email = "tj@cloudlink.ai" }
+]
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+    "urllib3>=2.2.3",
+    "faker>=30.8.2",
+    "pandas>=2.2.3",
+    "ruff>=0.7.0",
+    "setuptools>=75.6.0",
+    "aiohttp>=3.11.18",
+    "asyncio>=3.4.3",
+    "tenacity>=8.2.2",
+]
+
+[build-system]
+requires = ["setuptools>=61.0", "setuptools-git-versioning"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools-git-versioning]
+enabled = true
+
+
+[tool.uv]
+dev-dependencies = [
+    "delta-spark>=3.2.1",
+    "pre-commit>=4.0.1",
+    "pyspark>=3.5.3",
+    "pytest-mock>=3.14.0",
+    "pytest>=7.1.0,<8.3.0",
+    "ruff>=0.7.0",
+]
+
+[project.urls]
+"README" = "https://github.com/cltj/harv/README.md"
+"CHANGELOG" = "https://github.com/cltj/harv/CHANGELOG.md"
+
+
+[tool.ruff]
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+
+]
+include=["*.py"]
+show-fixes = true
+builtins = ["_"]
+extend-exclude=["tests/*", "docs/*", "terraform/*", "devops/*", "scripts/*", "**/__init__.py"]
+#fix= false # --no-fix, --fix-only
+line-length = 120
+output-format = "concise" # full, concise , azure
+preview = false
+required-version = ">=0.7.0" # ruff version
+respect-gitignore= true
+#show-fixes = true
+
+
+
+[tool.ruff.lint]
+task-tags = ["TODO"]
+
+
+#  All validation rules
+select = [
+    "F",
+    "E",
+    "W191", "W291", "W292", "W293", "W391", "W505", "W605",
+    "C901",
+    "I001", "I002",
+    "N801", "N802", "N803", "N805", "N806", "N999",
+    "D101", "D102", "D103", "D104", "D105", "D106", "D107",
+    "D200", "D201", "D202", "D204", "D205", "D206", "D207", "D208", "D209",
+    "D210", "D211", "D213", "D214", "D215",
+    "D300", "D301",
+    "D400", "D402","D403", "D404", "D405", "D406", "D407", "D408", "D409",
+    "D410", "D411", "D412", "D413", "D414", "D415", "D416", "D417", "D418", "D419",
+    "UP032",
+    "ANN001", "ANN002", "ANN003", "ANN201", "ANN202", "ANN204", "ANN205", "ANN206", "ANN401",
+    "S105", "S106", "S107", "S110", "S112", "S202", "S310", "S312",
+    "FBT001", "FBT002", "FBT003",
+    "B012", "B016", "B018", "B019",
+    "B020", "B024", "B025", "B027", "B028", "B029",
+    "B030", "B032", "B033", "B034", "B035", "B905",
+    "A001", "A002",
+    "COM819",
+    "C400", "C401", "C402", "C403", "C404", "C405", "C406", "C408", "C409",
+    "C410", "C411", "C413", "C414", "C415", "C416", "C417", "C418","C419", "C420",
+    "DTZ001", "DTZ002", "DTZ003", "DTZ004", "DTZ005", "DTZ006", "DTZ007", "DTZ011", "DTZ012",
+    "T100",
+    "EM101", "EM102", "EM103",
+    "ICN001", "ICN002", "ICN003",
+    "LOG001", "LOG002", "LOG007", "LOG009",
+    "INP001",
+    "T201", "T203",
+    "Q000", "Q001", "Q002", "Q003", "Q004",
+    "RET501", "RET502", "RET503", "RET504", "RET505", "RET506", "RET507", "RET508",
+    "SIM101", "SIM102", "SIM103", "SIM105", "SIM107", "SIM108", "SIM109",
+    "SIM110", "SIM112", "SIM113", "SIM114", "SIM115", "SIM116", "SIM117", "SIM118",
+    "SIM201", "SIM202", "SIM208", "SIM210", "SIM211", "SIM212",
+    "SIM220", "SIM221", "SIM222", "SIM223", "SIM300", "SIM401", "SIM910", "SIM911",
+    "ARG001", "ARG002", "ARG003", "ARG004", "ARG005",
+    "TD001", "TD002", "TD003", "TD004", "TD005", "TD006", "TD007",
+    "PD002", "PD003", "PD004", "PD007", "PD008", "PD009",
+    "PD010", "PD011", "PD012", "PD013", "PD015", "PD101",
+    "TRY002", "TRY003", "TRY004", "TRY201", "TRY203", "TRY300", "TRY301", "TRY400", "TRY401",
+    "FLY002",
+    "NPY001", "NPY002", "NPY003", "NPY201"
+]
+
+# Enable autofix for specific rules
+fixable = [
+    "F401", "F541", "F601", "F602", "F632", "F811",  "F841", "F811","F901",
+    "E201", "E202", "E203", "E204", "E211", "E221", "E222", "E223", "E224",
+    "E225", "E226", "E227", "E228", "E231", "E241", "E251", "E252", "E261",
+    "E262", "E265", "E266", "E271", "E272", "E273", "E274", "E275", "E271",
+    "E301", "E302", "E303", "E304", "E305", "E306", "E305", "E401", "E703",
+    "E711", "E712", "E713", "E714", "E731", "E712",
+    "W291", "W292", "W293", "W391", "W605",
+    "I001", "I002",
+    "N805",
+    "D200", "D201", "D202", "D204", "D205", "D207", "D208", "D209",
+    "D210", "D211", "D212", "D213", "D214", "D215",
+    "D300", "D301",
+    "D400", "D403", "D405", "D406", "D407", "D408", "D409",
+    "D410", "D411", "D413", "D415", "D416",
+    "UP032",
+    "ANN201", "ANN202", "ANN204", "ANN205", "ANN205",
+    "B033", "B905",
+    "COM819",
+    "C400", "C401", "C402", "C403", "C404", "C405", "C406", "C408", "C409",
+    "C410", "C411", "C413", "C414", "C416", "C417", "C418","C419", "C420",
+    "EM101", "EM102", "EM103",
+    "LOG001", "LOG002", "LOG009",
+    "T201", "T203",
+    "Q000", "Q001", "Q002", "Q003", "Q004",
+    "RET501", "RET502", "RET503", "RET504", "RET505", "RET506", "RET507", "RET508",
+    "SIM101", "SIM102", "SIM103", "SIM105", "SIM108", "SIM109", "SIM110", "SIM112",
+    "SIM114", "SIM117", "SIM118", "SIM201", "SIM202", "SIM208", "SIM210", "SIM211",
+    "SIM212", "SIM220", "SIM221", "SIM222", "SIM223", "SIM300", "SIM401", "SIM910",
+    "SIM911",
+    "TD006",
+    "PD002",
+    "TRY201", "TRY400",
+    "FLY002",
+    "NPY001", "NPY003", "NPY201"
+]
+
+unfixable = [
+    "F",
+    "E",
+    "W191", "W505",
+    "C901",
+    "N801", "N802", "N803", "N806", "N999",
+    "D101", "D102", "D103", "D104", "D105", "D106", "D107",
+    "D202", "D205", "D206", "D207", "D208", "D209",
+    "D213", "D214", "D215",
+    "D402", "D404", "D408", "D412", "D414", "D417", "D418", "D419",
+    "ANN001", "ANN002", "ANN003", "ANN401",
+    "S105", "S106", "S107", "S110", "S112", "S202", "S310", "S312",
+    "FBT001", "FBT002", "FBT003",
+    "B012", "B016", "B018", "B019",
+    "B020", "B024", "B025", "B027", "B028", "B029",
+    "B030", "B032", "B034", "B035",
+    "A001", "A002",
+    "COM819",
+    "C413", "C415",
+    "DTZ001", "DTZ002", "DTZ003", "DTZ004", "DTZ005", "DTZ006", "DTZ007", "DTZ011", "DTZ012",
+    "T100",
+    "EM102", "EM103",
+    "ICN001", "ICN002", "ICN003",
+    "LOG007",
+    "INP001",
+    "T203",
+    "Q004",
+    "SIM107", "SIM109", "SIM113", "SIM115", "SIM116", "SIM210", "SIM212", "SIM223",
+    "ARG001", "ARG002", "ARG003", "ARG004", "ARG005",
+    "TD001", "TD002", "TD003", "TD004", "TD005", "TD007",
+    "PD003", "PD004", "PD007", "PD008", "PD009",
+    "PD010", "PD011", "PD012", "PD013", "PD015", "PD101", "PD901",
+    "TRY002", "TRY003", "TRY004", "TRY203", "TRY300", "TRY301", "TRY401",
+    "NPY002"
+]
+
+ignore = [
+    "D212", "D203",
+    "F821",
+    "COM812",
+    "PD901",
+    "N", "UP", "YTT", "ASYNC", "S", "BLE", "B", "A", "COM", "CPY",
+    "DJ", "EXE", "FA", "ISC", "G", "PIE", "PYI", "PT", "RSE", "SLF",
+    "SLOT", "TID", "TCH", "INT", "FIX", "ERA", "PGH", "AIR", "PERF", "FURB"
+]
+
+
+[tool.ruff.lint.pycodestyle]
+ignore-overlong-task-comments = true
+max-line-length = 120
+
+[tool.ruff.lint.mccabe]
+# Flag errors (`C901`) whenever the complexity level exceeds 8.
+max-complexity = 8
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.flake8-annotations]
+mypy-init-return = true
+
+[tool.ruff.lint.per-file-ignores]
+# Ignore `E402` (import violations) in all `__init__.py` files, and in `path/to/file.py`.
+"__init__.py" = ["E402"]
+# Ignore `D` rules everywhere except for the `src/` directory.
+"!src/**.py" = ["D"]
+
+[tool.ruff.lint.flake8-errmsg]
+max-string-length = 60
+
+[tool.ruff.lint.flake8-import-conventions.aliases]
+# Declare the default aliases.
+altair = "alt"
+"matplotlib.pyplot" = "plt"
+numpy = "np"
+pandas = "pd"
+seaborn = "sns"
+scipy = "sp"
+tensorflow = "tf"
+polars = "pl"
+pyarrow = "pa"
+
+[tool.ruff.lint.flake8-quotes]
+docstring-quotes = "double"
+inline-quotes = "double"
+multiline-quotes = "double"
+
+[tool.ruff.lint.isort]
+from-first = false
+length-sort-straight = true
+lines-after-imports = 2
+section-order = ["future", "standard-library", "first-party", "local-folder", "third-party"]
+
+[tool.ruff.lint.pylint]
+max-args = 10
+max-bool-expr = 10
+max-branches = 15
+max-locals = 20
+max-nested-blocks = 10
+max-positional-args = 10
+max-returns = 10
+max-statements = 75
+
+
+[tool.ruff.analyze]
+detect-string-imports = true
+direction = "Dependencies"
+exclude = ["tests/*", "docs/*", "terraform/*", "devops/*", "databricks/*", "ruff_cache/*", ".venv/*", ".vscode/*"]
+
+
+[tool.ruff.format]
+# Enable reformatting of code snippets in docstrings.
+docstring-code-format = false
+# Format all docstring code snippets with a line length of 60.
+docstring-code-line-length = 120
+indent-style = "space"
+# Use `\n` line endings for all files
+line-ending = "lf"
+# Enable preview style formatting.
+preview = false
+# Prefer double quotes.
+quote-style = "double"
+skip-magic-trailing-comma = false
+
+
+
+[tool.pytest.ini_options]
+filterwarnings = [
+    "ignore:Signature.*does not match any known type:UserWarning",
+    "ignore:The distutils package is deprecated:DeprecationWarning",
+    "ignore:is_datetime64tz_dtype is deprecated:DeprecationWarning"
+]
+
+[dependency-groups]
+dev = [
+    "aioresponses>=0.7.8",
+    "asyncapi>=0.14.1",
+    "dotenv>=0.9.9",
+    "pytest-asyncio>=0.26.0",
+    "tenacity>=8.2.2",
+]
+
+
+# Notes
+# review N codes
+# Review UP codes
+# review ASYNC codes
+# review G codes
+# review PIE codes
+# review PYI codes
+# review PT codes
+# review PLC, PLE, PLR, PLW codes
+# review FAST codes
+# review PTH
