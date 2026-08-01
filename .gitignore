@@ -76,6 +76,9 @@ archive/
 .venv
 /.venv
 
+### Graphify ###
+graphify-out/
+
 ### old code ### (need to remove because its already checked in to git git rm -r --cached old)
 /old/
 /old/*
